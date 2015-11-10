@@ -14,13 +14,12 @@
             <% end %>
             <ol>
                 <% b.comments.each do |c| %>
-                    <% if current_user.email == c.user.email %>
                         <li><%=c.user.email%> : <%=c.msg%></li>
                         <% if current_user.email == c.user.email %>
                             <a href="/comment_edit?id=<%=c.id%>">수정</a>
                             <a href="/comment_delete?id=<%=c.id%>">삭제</a>
                         <% end %>
-                    <% end %>
+                    
                 <% end %>
             </ol>
         </li>
