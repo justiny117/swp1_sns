@@ -11,8 +11,21 @@
     <% @blogs.each do |b| %>
         <li><%=b.user.email%> :</li>
         <div class = "well">
-            <%=b.content%>
+            <%= truncate(b.content, length:250) %>
+            <a href="/blog?id=<%=b.id%>">더보기</a>
+            <%=form_tag 'agree', class: "form-inline" do%>
+                <input type="hidden" name="blog_id" value="<%=b.id%>">
+                <input type="hidden" name="bloguseremail" value="<%=b.user.email%>">
+                <%if current_user.nil?%>
+                <%else%>
+                <input type="hidden" name="userexist" value="<%=b.agrees.exists?(user_id: current_user.id)%>">
+                <%end%>
+                <div class="form-group">
+                    <input type="submit" class="btn btn-danger" value="공감 <%=b.agrees.count%>">
+                </div>
+            <% end %>
         </div>
+        
         <% if user_signed_in? %>
             <% if current_user.email == b.user.email %>
                     <div class = "form-group">
@@ -32,6 +45,18 @@
                             <%=c.user.email%> : <%=c.msg%>
                                 <a href="/comment_edit?id=<%=c.id%>">수정</a>
                                 <a href="/comment_delete?id=<%=c.id%>">삭제</a>
+                                
+                                <%=form_tag 'agreec', class: "form-inline" do%>
+                                    <input type="hidden" name="comment_id" value="<%=c.id%>">
+                                    <input type="hidden" name="commentuseremail" value="<%=c.user.email%>">
+                                    <%if current_user.nil?%>
+                                    <%else%>
+                                    <input type="hidden" name="userexist2" value="<%=c.agreecs.exists?(user_id: current_user.id)%>">
+                                    <%end%>
+                                    <div class="form-group">
+                                        <input type="submit" value="공감 <%=c.agreecs.count%>">
+                                    </div>
+                                <% end %>
                         </div>
                     </li>
                 <% end %>

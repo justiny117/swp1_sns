@@ -2,6 +2,8 @@ Rails.application.routes.draw do
   
   devise_for :users
   root "timeline#index"
+  get '/fox' => 'timeline#fox'
+  get '/wolf' => 'timeline#wolf'
   post '/write' => 'timeline#write'
   post '/comment' => 'timeline#comment'
   get '/blog_edit' => 'timeline#blog_edit'
@@ -12,6 +14,9 @@ Rails.application.routes.draw do
   post '/comment_update' => 'timeline#comment_update'
   get '/myblog' => 'timeline#myblog'
   get '/mycomment' => 'timeline#mycomment'
+  post '/agree' => 'timeline#agree'
+  post '/agreec' => 'timeline#agreec'
+  get '/blog' => 'timeline#blog'
   
   #get '/blog/edit' => 'blog#edit'
   # The priority is based upon order of creation: first created -> highest priority.

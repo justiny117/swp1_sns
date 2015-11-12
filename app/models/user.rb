@@ -7,4 +7,6 @@ class User < ActiveRecord::Base
          
   has_many :blogs
   has_many :comments
+  belongs_to :agreec
+  belongs_to :agree
 end
