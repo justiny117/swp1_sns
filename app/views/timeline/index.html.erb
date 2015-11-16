@@ -51,7 +51,7 @@
                                     <input type="hidden" name="commentuseremail" value="<%=c.user.email%>">
                                     <%if current_user.nil?%>
                                     <%else%>
-                                    <input type="hidden" name="userexist2" value="<%=c.agreecs.exists?(user_id: current_user.id)%>">
+                                        <input type="hidden" name="userexist2" value="<%=c.agreecs.exists?(user_id: current_user.id)%>">
                                     <%end%>
                                     <div class="form-group">
                                         <input type="submit" value="공감 <%=c.agreecs.count%>">
@@ -67,12 +67,16 @@
             <% end %>
         <% end %>
         </ol>
-        <%=form_tag '/comment', class: "form-inline" do%>
-            <input type="hidden" name="blog_id" value="<%=b.id%>">
-            <div class = "form-group">
-                <input type="text" name="comment" class="form-control">
-                <input type="submit" class="btn btn-primary">
-            </div>
+        <% if user_signed_in? %>
+            <% if b.user.is_female != current_user.is_female%>
+                <%=form_tag '/comment', class: "form-inline" do%>
+                    <input type="hidden" name="blog_id" value="<%=b.id%>">
+                    <div class = "form-group">
+                        <input type="text" name="comment" class="form-control">
+                        <input type="submit" class="btn btn-primary">
+                    </div>
+                <% end %>
+            <% end %>
         <% end %>
     <% end %>
 </ul>
