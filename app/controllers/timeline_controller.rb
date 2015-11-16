@@ -60,25 +60,18 @@ class TimelineController < ApplicationController
         redirect_to :root
         else
             Agree.create(user_id: current_user.id, blog_id: params[:blog_id])
-        
-        redirect_to :root
+            redirect_to :root
         end
     end
     
     def agreec
-        
         if params[:commentuseremail] == current_user.email then
-            
         redirect_to :root
-
         elsif   params[:userexist2] == 'true'      then
-        
         redirect_to :root
-
         else
             Agreec.create(user_id: current_user.id, comment_id: params[:comment_id])
-        
-        redirect_to :root
+            redirect_to :root
         end        
     end
     def blog
