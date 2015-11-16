@@ -1,38 +1,39 @@
 <ul>
-        <li><%=@pp.user.nickname%> :</li>
-        <div class = "well">
-            <%= @pp.content  %>
-            
-        </div>
-        <% if user_signed_in? %>
-            <% if current_user.email == @pp.user.email %>
-                    <div class = "form-group">
-                        <div class = "col-md-offset-11">
-                        <a href="/blog_edit?id=<%=@pp.id%>">수정</a>
-                        <a href="/blog_delete?id=<%=@pp.id%>">삭제</a>
-                        </div>
+    <li><%=@pp.user.nickname%> :</li>
+    <div class = "well">
+        <%= @pp.content  %>
+        
+    </div>
+    <% if user_signed_in? %>
+        <% if current_user.email == @pp.user.email %>
+                <div class = "form-group">
+                    <div class = "col-md-offset-11">
+                    <a href="/blog_edit?id=<%=@pp.id%>">수정</a>
+                    <a href="/blog_delete?id=<%=@pp.id%>">삭제</a>
                     </div>
-            <% end %>
+                </div>
         <% end %>
-        <ol>
-        <% @pp.comments.each do |c| %>
-            <% if user_signed_in? %>
-                <% if current_user.email == c.user.email %>
-                    <li>
-                        <div>
-                            <%=c.user.email%> : <%=c.msg%>
-                                <a href="/comment_edit?id=<%=c.id%>">수정</a>
-                                <a href="/comment_delete?id=<%=c.id%>">삭제</a>
-                        </div>
-                    </li>
-                <% end %>
-            <% else %>
+    <% end %>
+    <ol>
+    <% @pp.comments.each do |c| %>
+        <% if user_signed_in? %>
+            <% if current_user.email == c.user.email %>
                 <li>
-                    <%=c.user.email%> : <%=c.msg%>
+                    <div>
+                        <%=c.user.email%> : <%=c.msg%>
+                            <a href="/comment_edit?id=<%=c.id%>">수정</a>
+                            <a href="/comment_delete?id=<%=c.id%>">삭제</a>
+                    </div>
                 </li>
             <% end %>
+        <% else %>
+            <li>
+                <%=c.user.email%> : <%=c.msg%>
+            </li>
         <% end %>
-        </ol>
+    <% end %>
+    </ol>
+    <% if current_user.is_female != @pp.user.is_female %>
         <%=form_tag '/comment', class: "form-inline" do%>
             <input type="hidden" name="blog_id" value="<%=@pp.id%>">
             <div class = "form-group">
@@ -40,4 +41,5 @@
                 <input type="submit" class="bin ban-primary">
             </div>
         <% end %>
+    <% end %>
 </ul>
