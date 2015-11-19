@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   root "timeline#index"
   get '/fox' => 'timeline#fox'
   get '/wolf' => 'timeline#wolf'
+  get '/agreeinorder' => 'timeline#agreeinorder'
   post '/write' => 'timeline#write'
   post '/comment' => 'timeline#comment'
   get '/blog_edit' => 'timeline#blog_edit'

@@ -55,9 +55,9 @@ class TimelineController < ApplicationController
     end
     def agree
         if params[:bloguseremail] == current_user.email then
-        redirect_to :root
+            redirect_to :root
         elsif   params[:userexist] == 'true'      then
-        redirect_to :root
+            redirect_to :root
         else
             Agree.create(user_id: current_user.id, blog_id: params[:blog_id])
             redirect_to :root
@@ -66,15 +66,20 @@ class TimelineController < ApplicationController
     
     def agreec
         if params[:commentuseremail] == current_user.email then
-        redirect_to :root
+            redirect_to :root
         elsif   params[:userexist2] == 'true'      then
-        redirect_to :root
+            redirect_to :root
         else
             Agreec.create(user_id: current_user.id, comment_id: params[:comment_id])
             redirect_to :root
         end        
     end
+    
     def blog
         @pp = Blog.find(params[:id])
+    end
+    
+    def agreeinorder
+        @blogs = Blog.all.sort_by{|b| b.agree_count}.reverse
     end
 end
