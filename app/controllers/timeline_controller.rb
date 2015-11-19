@@ -74,7 +74,26 @@ class TimelineController < ApplicationController
             redirect_to :root
         end        
     end
+<<<<<<< HEAD
     
+=======
+    def follow
+        @followexist = Follower.where(useremail: params[:bloguseremail])
+        if params[:bloguseremail] == current_user.email then
+        redirect_to :root
+        elsif  @followexist.exists?(user_id: current_user.id) == 'true'  then
+        redirect_to :root        
+        else
+        Following.create(useremail: current_user.email, user_id: params[:followuserid])
+        Follower.create(useremail: params[:followuseremail], user_id: current_user.id)
+        redirect_to :root
+        end
+    end    
+    def follow_gather
+        @user = User.all
+        @blogs = Blog.all.reverse
+    end
+>>>>>>> 587a59d94bd1baad556ddf1d979b19cb0a61587b
     def blog
         @pp = Blog.find(params[:id])
     end

@@ -25,6 +25,14 @@
                     <input type="submit" class="btn btn-danger" value="공감 <%=b.agrees.count%>">
                 </div>
             <% end %>
+            <%=form_tag 'follow', class: "form-inline" do%>
+                <input type="hidden" name="bloguseremail" value="<%=b.user.email%>">
+                <input type="hidden" name="followuserid" value="<%=b.user.id%>">
+                <input type="hidden" name="followuseremail" value="<%=b.user.email%>">
+                <div class="form-group">
+                    <input type="submit" class="btn btn-info" value="팔로우">
+                </div>
+            <% end %>            
         </div>
         <% else %>
             <%=b.content%>
@@ -58,15 +66,28 @@
         <ol>
         <% b.comments.each do |c| %>
             <% if user_signed_in? %>
-                <% if current_user.email == c.user.email %>
-                    <li>
-                        <div>
-                            <%=c.user.email%> : <%=c.msg%>
-                                <a href="/comment_edit?id=<%=c.id%>">수정</a>
-                                <a href="/comment_delete?id=<%=c.id%>">삭제</a>
-                        </div>
-                    </li>
-                <% end %>
+                <li>
+                    <div>
+                        <%=c.user.email%> : <%=c.msg%>
+                        <% if current_user.email == c.user.email %>
+                            <a href="/comment_edit?id=<%=c.id%>">수정</a>
+                            <a href="/comment_delete?id=<%=c.id%>">삭제</a>
+                        <% end %>
+                    </div>
+                    <div>
+                         <%=form_tag 'agreec', class: "form-inline" do%>
+                            <input type="hidden" name="comment_id" value="<%=c.id%>">
+                            <input type="hidden" name="commentuseremail" value="<%=c.user.email%>">
+                            <%if current_user.nil?%>
+                            <%else%>
+                                <input type="hidden" name="userexist2" value="<%=c.agreecs.exists?(user_id: current_user.id)%>">
+                            <%end%>
+                            <div class="form-group">
+                                <input type="submit" value="공감 <%=c.agreecs.count%>">
+                            </div>
+                         <% end %>
+                    </div>
+                </li>
             <% else %>
                 <li>
                     <%=c.user.email%> : <%=c.msg%>

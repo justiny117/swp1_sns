@@ -17,6 +17,8 @@ Rails.application.routes.draw do
   get '/mycomment' => 'timeline#mycomment'
   post '/agree' => 'timeline#agree'
   post '/agreec' => 'timeline#agreec'
+  post '/follow' => 'timeline#follow'
+  get '/follow_gather' => 'timeline#follow_gather'
   get '/blog' => 'timeline#blog'
   
   #get '/blog/edit' => 'blog#edit'

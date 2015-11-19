@@ -27,6 +27,10 @@
                 <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%=current_user.email%> <span class="caret"></span></a>
                   <ul class="dropdown-menu">
+                    <li><a href="/users/edit">내 정보</a></li>
+                    <li role="separator" class="divider"></li>
+                    <li><a href="/users/">인증하기</a></li>
+                    <li role="separator" class="divider"></li>
                     <li><a href="/myblog">내 글</a></li>
                     <li role="separator" class="divider"></li>
                     <li><a href="/mycomment">내 댓글</a></li>
@@ -34,7 +38,11 @@
                 </li>
                 <li><a href="/fox">FOX</a></li>
                 <li><a href="/wolf">WOLF</a></li>
+<<<<<<< HEAD
                 <li><a href="/agreeinorder">Agree</a></li>
+=======
+                <li><a href="/follow_gather">follow글</a></li>
+>>>>>>> 587a59d94bd1baad556ddf1d979b19cb0a61587b
             </ul>
             <ul class="nav navbar-nav navbar-right">
               <li><a href="/users/sign_out" data-method="delete" >로그아웃</a></li>
