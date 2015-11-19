@@ -12,8 +12,9 @@
         <% if b.user.is_female == false %>
             <li><%=b.user.email%> :</li>
             <div class = "well">
-                <%= truncate(b.content, length:250) %>
-                <a href="/blog?id=<%=b.id%>">더보기</a>
+                <div class="article">
+                    <%= b.content %>
+                </div>
                 <%=form_tag 'agree', class: "form-inline" do%>
                     <input type="hidden" name="blog_id" value="<%=b.id%>">
                     <input type="hidden" name="bloguseremail" value="<%=b.user.email%>">
@@ -32,7 +33,7 @@
                     <div class="form-group">
                         <input type="submit" class="btn btn-info" value="팔로우">
                     </div>
-                <% end %>
+                <% end %>            
             </div>
             <% if user_signed_in? %>
                 <% if current_user.email == b.user.email %>
@@ -90,3 +91,8 @@
 </ul>
 
 
+<script>
+    $(".article").readmore({
+        collapsedHeight: 20
+    });
+</script>

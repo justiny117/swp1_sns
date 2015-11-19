@@ -90,10 +90,6 @@ class TimelineController < ApplicationController
         @user = User.all
         @blogs = Blog.all.reverse
     end
-    def blog
-        @pp = Blog.find(params[:id])
-    end
-    
     def agreeinorder
         @blogs = Blog.all.sort_by{|b| b.agree_count}.reverse
     end
