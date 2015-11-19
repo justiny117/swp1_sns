@@ -74,9 +74,6 @@ class TimelineController < ApplicationController
             redirect_to :root
         end        
     end
-<<<<<<< HEAD
-    
-=======
     def follow
         @followexist = Follower.where(useremail: params[:bloguseremail])
         if params[:bloguseremail] == current_user.email then
@@ -93,7 +90,6 @@ class TimelineController < ApplicationController
         @user = User.all
         @blogs = Blog.all.reverse
     end
->>>>>>> 587a59d94bd1baad556ddf1d979b19cb0a61587b
     def blog
         @pp = Blog.find(params[:id])
     end
