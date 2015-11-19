@@ -47,12 +47,14 @@
         <ol>
         <% b.comments.each do |c| %>
             <% if user_signed_in? %>
-                <% if current_user.email == c.user.email %>
+                
                     <li>
                         <div>
                             <%=c.user.email%> : <%=c.msg%>
+                            <% if current_user.email == c.user.email %>
                                 <a href="/comment_edit?id=<%=c.id%>">수정</a>
                                 <a href="/comment_delete?id=<%=c.id%>">삭제</a>
+                            <% end %>
                         </div>
                              <%=form_tag 'agreec', class: "form-inline" do%>
                                 <input type="hidden" name="comment_id" value="<%=c.id%>">
@@ -66,7 +68,7 @@
                                 </div>
                              <% end %>
                     </li>
-                <% end %>
+                
             <% else %>
                 <li>
                     <%=c.user.email%> : <%=c.msg%>
