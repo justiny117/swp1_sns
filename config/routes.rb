@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
   
-  devise_for :users
+  devise_for :users, controllers: {
+        registrations: 'users/registrations'
+      }
+  
   root "timeline#index"
   get '/fox' => 'timeline#fox'
   get '/wolf' => 'timeline#wolf'
@@ -19,8 +22,7 @@ Rails.application.routes.draw do
   post '/agreec' => 'timeline#agreec'
   post '/follow' => 'timeline#follow'
   get '/follow_gather' => 'timeline#follow_gather'
-  get '/blog' => 'timeline#blog'
-  
+
   #get '/blog/edit' => 'blog#edit'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

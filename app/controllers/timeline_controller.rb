@@ -45,6 +45,7 @@ class TimelineController < ApplicationController
         commd.destroy
         redirect_to :root
     end
+
     def myblog
         @myblogs = Blog.where(user_id: current_user.id)
     end

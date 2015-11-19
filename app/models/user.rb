@@ -11,4 +11,9 @@ class User < ActiveRecord::Base
   belongs_to :agree
   belongs_to :follower
   belongs_to :following
+  
+  def all_delete
+    blogs.each{|b| b.destroy}
+    comments.each{|b| b.destroy}
+  end
 end
