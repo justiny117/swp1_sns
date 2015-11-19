@@ -12,8 +12,9 @@
         <li><%=b.user.email%> :</li>
         <% if b.content.length > 250 %>
         <div class = "well">
-            <%= truncate(b.content, length:250) %>
-            <a href="/blog?id=<%=b.id%>">더보기</a>
+            <div class="article">
+                <%= b.content %>
+            </div>
             <%=form_tag 'agree', class: "form-inline" do%>
                 <input type="hidden" name="blog_id" value="<%=b.id%>">
                 <input type="hidden" name="bloguseremail" value="<%=b.user.email%>">
@@ -112,3 +113,8 @@
         <% end %>
     <% end %>
 </ul>
+<script>
+    $(".article").readmore({
+        collapsedHeight: 20
+    });
+</script>
