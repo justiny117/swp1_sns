@@ -1,0 +1,6 @@
+<h2>Agree in order</h2>
+<ul>
+    <% @blogs.each do |b| %>
+        <li><%=b.user.email%> : <%=b.content%></li>
+    <% end %>
+</ul>    
