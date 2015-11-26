@@ -1,0 +1,56 @@
+<% @user.each do |a| %>
+    <%=a.nickname%>의 마이페이지
+    <br>
+    <%if current_user.email == a.email%>
+    이메일: <%=a.email%>
+    <br>
+    마지막로그인: <%=a.last_sign_in_at%>
+    <br>
+    <a href="/users/edit">정보수정</a>
+    <%else%>
+    <%end%>
+    <br><br>
+    성별: 
+    <% if a.is_female == false%>남자
+    <%else%>여자
+    <%end%>
+    <br><br>
+    
+    <%if current_user.email == a.email%>
+    나를 
+    <%else%>
+    이 유저가 
+    <%end%>
+    팔로우 하고 있는 사람:<br>
+        <% @Follow = Following.where(useremail: a.email)%>
+        <% @user2 = User.all%>
+        <% @user2.each do |b| %>
+            <% if @Follow.exists?(user_id: b.id) == true %>
+                <%=b.email%>
+                        <a href="/mypage?nickname=<%=b.nickname%>">마이페이지</a>
+                        <%if current_user.email == a.email%>
+                            <a href="/follow_delete?id=<%=b.id%>">삭제</a>
+                        <%else%>
+                        <%end%>
+                        <br>
+            <% end %>
+        <% end %>
+
+    <br>
+    <%if current_user.email == a.email%>
+    내가 
+    <%else%>
+    이 유저를 
+    <%end%>
+    팔로우 하는 사람:<br>
+            <% @Follow = Follower.where(useremail: a.email)%>
+            <% @user2.each do |c| %>
+                <% if @Follow.exists?(user_id: c.id) == true %>
+                    <%=c.email%>
+                            <a href="/mypage?nickname=<%=c.nickname%>">마이페이지</a>
+                            <br>
+                <% end %>
+            <% end %>
+    
+    
+<%end%>

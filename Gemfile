@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 
 
+gem 'mailgun_rails'
 gem 'mini_magick'
 gem 'carrierwave'
 gem 'pg'
