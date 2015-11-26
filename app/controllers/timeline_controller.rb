@@ -98,4 +98,19 @@ class TimelineController < ApplicationController
     def mypage
         @user = User.where(nickname: params[:nickname])
     end
+    
+    def follow_delete
+        @userdate = User.where(id: params[:id])
+        @userdate.each do |d|
+            @followdel1 = Follower.where(useremail: d.email, user_id: current_user.id)
+            @followdel2 = Following.where(useremail: current_user.email, user_id: d.id) 
+            @followdel1.each do |a|
+            a.destroy
+            end
+            @followdel2.each do |b|
+            b.destroy
+            end
+        end
+        redirect_to :root
+    end
 end
