@@ -9,6 +9,7 @@
 <% end %>
 <ul>
     <% @blogs.each do |b| %>
+        <li><img src="<%= b.user.image_url(:thumb) %>"></li>
         <li><%=b.user.email%> :</li>
         
         <div class = "well">

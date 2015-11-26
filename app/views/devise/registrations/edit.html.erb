@@ -12,6 +12,24 @@
     <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
   <% end %>
 
+  <% if current_user.image.url.present? %>
+
+    <img src="<%=current_user.image.url%>">
+    <div class="field">
+    사진 삭제
+    <%= f.label :remove_image do %>
+    <%= f.check_box :remove_image %>
+    <% end %>
+  </div>
+
+  <% end %>
+
+  <div class="field">
+    <%= f.label :image %>
+    <%= f.file_field :image %>
+    <%= f.hidden_field :image_cache%>
+  </div>
+
   <div class="field">
     <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
     <%= f.password_field :password, autocomplete: "off" %>
