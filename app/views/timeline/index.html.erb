@@ -12,7 +12,11 @@
         <li><%=b.user.email%> :</li>
         
         <div class = "well">
+<<<<<<< HEAD
             <div class="article" important!>
+=======
+            <div class = "article">
+>>>>>>> d5b92a97b47f0de3335aa3231a2efd64a5d69b17
                 <%= b.content %>
             </div>
             <%=form_tag 'agree', class: "form-inline" do%>
@@ -51,25 +55,27 @@
             <% b.comments.each do |c| %>
                 <% if user_signed_in? %>
                     <li>
-                        <div>
-                            <%=c.user.email%> : <%=c.msg%>
-                            <% if current_user.email == c.user.email %>
-                                <a href="/comment_edit?id=<%=c.id%>">수정</a>
-                                <a href="/comment_delete?id=<%=c.id%>">삭제</a>
-                            <% end %>
-                        </div>
-                        <div>
-                             <%=form_tag 'agreec', class: "form-inline" do%>
-                                <input type="hidden" name="comment_id" value="<%=c.id%>">
-                                <input type="hidden" name="commentuseremail" value="<%=c.user.email%>">
-                                <%if current_user.nil?%>
-                                <%else%>
-                                    <input type="hidden" name="userexist2" value="<%=c.agreecs.exists?(user_id: current_user.id)%>">
-                                <%end%>
-                                <div class="form-group">
-                                    <input type="submit" value="공감 <%=c.agreecs.count%>">
-                                </div>
-                             <% end %>
+                        <div class = "carticle" >
+                            <div>
+                                <%=c.user.email%> : <%=c.msg%>
+                                <% if current_user.email == c.user.email %>
+                                    <a href="/comment_edit?id=<%=c.id%>">수정</a>
+                                    <a href="/comment_delete?id=<%=c.id%>">삭제</a>
+                                <% end %>
+                            </div>
+                            <div>
+                                 <%=form_tag 'agreec', class: "form-inline" do%>
+                                    <input type="hidden" name="comment_id" value="<%=c.id%>">
+                                    <input type="hidden" name="commentuseremail" value="<%=c.user.email%>">
+                                    <%if current_user.nil?%>
+                                    <%else%>
+                                        <input type="hidden" name="userexist2" value="<%=c.agreecs.exists?(user_id: current_user.id)%>">
+                                    <%end%>
+                                    <div class="form-group">
+                                        <input type="submit" value="공감 <%=c.agreecs.count%>">
+                                    </div>
+                                 <% end %>
+                            </div>
                         </div>
                     </li>
                 <% else %>
@@ -97,5 +103,8 @@
 <script>
     $(".article").readmore({
         collapsedHeight: 20
+    });
+    $(".carticle").comment({
+        collapsedHeight: 0
     });
 </script>
