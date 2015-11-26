@@ -6,7 +6,7 @@
     <br>
     마지막로그인: <%=a.last_sign_in_at%>
     <br>
-    <a href="https://tp1119-khun-1.c9users.io/myblog">내가 쓴 글</a><br>
+    <a href="/userblog?nickname=<%=current_user.nickname%>">내가 쓴 글</a><br>
     <a href="/users/edit">정보수정</a>
     <%else%>
     <%end%>
