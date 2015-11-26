@@ -94,4 +94,8 @@ class TimelineController < ApplicationController
     def agreeinorder
         @blogs = Blog.all.sort_by{|b| b.agree_count}.reverse
     end
+
+    def mypage
+        @user = User.where(nickname: params[:nickname])
+    end
 end
