@@ -113,4 +113,9 @@ class TimelineController < ApplicationController
         end
         redirect_to :root
     end
+    
+    def userblog
+        @uu = User.where(nickname: params[:nickname]).take
+        @blogs = Blog.all
+    end
 end

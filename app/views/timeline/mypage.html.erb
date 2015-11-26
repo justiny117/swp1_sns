@@ -6,6 +6,7 @@
     <br>
     마지막로그인: <%=a.last_sign_in_at%>
     <br>
+    <a href="https://tp1119-khun-1.c9users.io/myblog">내가 쓴 글</a><br>
     <a href="/users/edit">정보수정</a>
     <%else%>
     <%end%>
@@ -17,7 +18,7 @@
     <br><br>
     
     <%if current_user.email == a.email%>
-    나를 
+    내가 
     <%else%>
     이 유저가 
     <%end%>
@@ -38,7 +39,7 @@
 
     <br>
     <%if current_user.email == a.email%>
-    내가 
+    나를 
     <%else%>
     이 유저를 
     <%end%>
@@ -52,5 +53,10 @@
                 <% end %>
             <% end %>
     
-    
+    <br>이 유저가 작성한 글<br>
+    <% if a.is_female == current_user.is_female%>
+    성별이 다른 유저의 글은 볼 수 없습니다.
+    <%else%>
+    <a href="/userblog?nickname=<%=a.nickname%>">바로가기</a></a>
+    <%end%>
 <%end%>
