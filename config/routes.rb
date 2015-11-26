@@ -3,8 +3,9 @@ Rails.application.routes.draw do
   devise_for :users, controllers: {
         registrations: 'users/registrations'
       }
-  
+  get '/front' => 'timeline#front'
   root "timeline#index"
+  
   get '/fox' => 'timeline#fox'
   get '/wolf' => 'timeline#wolf'
   get '/agreeinorder' => 'timeline#agreeinorder'
@@ -23,7 +24,7 @@ Rails.application.routes.draw do
   post '/follow' => 'timeline#follow'
   get '/follow_gather' => 'timeline#follow_gather'
 
-  get '/front' => 'timeline#front'
+  
 
   get '/mypage' => 'timeline#mypage'
   get '/follow_delete' => 'timeline#follow_delete'
