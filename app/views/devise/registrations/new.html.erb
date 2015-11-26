@@ -17,7 +17,13 @@
     <%= f.radio_button :is_female, '0' %> <%= f.label :is_female, "Male" %>
     <%= f.radio_button :is_female, '1' %> <%= f.label :is_female, "Female" %>
   </div>
-
+  
+    <div class="field">
+    <%= f.label :image %>
+    <%= f.file_field :image %>
+    <%= f.hidden_field :image_cache%>
+  </div>
+  
   <div class="field">
     <%= f.label :password %>
     <% if @minimum_password_length %>

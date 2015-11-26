@@ -22,7 +22,12 @@ Rails.application.routes.draw do
   post '/agreec' => 'timeline#agreec'
   post '/follow' => 'timeline#follow'
   get '/follow_gather' => 'timeline#follow_gather'
+<<<<<<< HEAD
   get '/front' => 'timeline#front'
+=======
+  get '/mypage' => 'timeline#mypage'
+  get '/follow_delete' => 'timeline#follow_delete'
+>>>>>>> 3ebfd8430861397886ad38e42360360d2d72351a
 
   #get '/blog/edit' => 'blog#edit'
   # The priority is based upon order of creation: first created -> highest priority.

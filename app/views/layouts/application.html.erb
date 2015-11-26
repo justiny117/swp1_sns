@@ -45,6 +45,10 @@
                 <li><a href="/follow_gather">follow글</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
+              <%if current_user.nil?%>
+              <%else%>
+                  <li><a href="/mypage?nickname=<%=current_user.nickname%>">마이페이지</a></li>
+              <%end%>
               <li><a href="/users/sign_out" data-method="delete" >로그아웃</a></li>
             </ul>
           <% else %>
@@ -52,7 +56,8 @@
               <li><a href="/">HOME</a></li>
               <li><a href="/users/sign_in">로그인</a></li>
               <li><a href="/users/sign_up">회원가입</a></li>
-            </ul>
+
+                          </ul>
           <% end %>
         </div><!--/.nav-collapse -->
       </div>
