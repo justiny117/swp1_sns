@@ -48,11 +48,12 @@
             <% end %>
         <% end %>
 
-        <ol>
-            <% b.comments.each do |c| %>
-                <% if user_signed_in? %>
-                    <li>
-                        <div class = "carticle" >
+        <div class = "carticle" >
+            <ol>
+                <% b.comments.each do |c| %>
+                    <% if user_signed_in? %>
+                    
+                        <li>    
                             <div>
                                 <%=c.user.email%> : <%=c.msg%>
                                 <% if current_user.email == c.user.email %>
@@ -73,16 +74,15 @@
                                     </div>
                                  <% end %>
                             </div>
-                        </div>
-                    </li>
-                <% else %>
-                    <li>
-                        <%=c.user.email%> : <%=c.msg%>
-                    </li>
+                        </li>    
+                    <% else %>
+                        <li>
+                            <%=c.user.email%> : <%=c.msg%>
+                        </li>
+                    <% end %>
                 <% end %>
-            <% end %>
-        </ol>
-                
+            </ol>
+        </div>        
         <% if user_signed_in? %>
             <% if b.user.is_female != current_user.is_female || b.user.email == current_user.email %>
                 <%=form_tag '/comment', class: "form-inline" do%>
