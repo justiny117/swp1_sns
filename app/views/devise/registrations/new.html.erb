@@ -1,43 +1,68 @@
-<h2>Register</h2>
+<head>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= devise_error_messages! %>
+    <!-- Custom CSS -->
+    <link href="cover.css" rel="stylesheet">
 
-  <div>
-    <%= f.label :nickname %><br />
-    <%= f.text_field :nickname, autofocus: true %>
-  </div>
+</head>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email %>
-  </div>
 
-  <div>
-    <%= f.radio_button :is_female, '0' %> <%= f.label :is_female, "Male" %>
-    <%= f.radio_button :is_female, '1' %> <%= f.label :is_female, "Female" %>
-  </div>
-  
-    <div class="field">
-    <%= f.label :image %>
-    <%= f.file_field :image %>
-    <%= f.hidden_field :image_cache%>
-  </div>
-  
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-  </div>
+<body>
+    <div class="cover"></div>
+    <!-- Header -->
+    <header id="top" class="header">
+        <div class="all-vertical-center">
+            <h2>회원가입</h2><br/>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
-  </div>
+            <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+              <%= devise_error_messages! %>
+            
+              <div>
+                <%= f.text_field :nickname, autofocus: true, placeholder: "별명" %>
+              </div><br/>
+            
+              <div class="field">
+                <%= f.email_field :email, placeholder: "이메일" %>
+              </div><br/>
+            
+              <div>
+                <%= f.radio_button :is_female, '0' %> <%= f.label :is_female, "Male" %>
+                <%= f.radio_button :is_female, '1' %> <%= f.label :is_female, "Female" %>
+              </div>
+              
+              <div class="field">
+                <%= f.label :image %>
+                <%= f.file_field :image %>
+                <%= f.hidden_field :image_cache%>
+              </div><br/>
+              
+              <div class="field">
+                <% if @minimum_password_length %>
+                <em>(<%= @minimum_password_length %>자 이상 입력해주세요)</em>
+                <% end %><br />
+                <%= f.password_field :password, autocomplete: "off", placeholder: "비밀번호" %>
+              </div><br/>
+            
+              <div class="field">
+                <%= f.password_field :password_confirmation, autocomplete: "off", placeholder: "비밀번호 확인" %>
+              </div><br/>
+            
+              <div class="actions">
+                <%= f.submit "가입하기" %>
+              </div>
+            <% end %>
+        </div>
+    </header>
+</body>
 
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
+<script>
+$(document).ready(function() {
+    setHeaderSize();
+    $(window).resize(function() {
+        setHeaderSize();
+    });
+
+    function setHeaderSize() {
+        $('.header').height($(window).height() - $('.navbar').height());
+    }
+});
+</script>
