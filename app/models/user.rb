@@ -1,7 +1,12 @@
 class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
+<<<<<<< HEAD
   devise :database_authenticatable, :registerable, :confirmable,
+=======
+  mount_uploader :image, ImageUploader
+  devise :database_authenticatable, :registerable,
+>>>>>>> 9e746def91febdd7a1234fb0f8f29c3bbc2d3201
          :recoverable, :rememberable, :trackable, :validatable
          
   validates_uniqueness_of :nickname       

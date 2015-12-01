@@ -1,4 +1,5 @@
-<h2>Timeline</h2>
+<H2><%= @uu.email %>의 Timeline</H2>
+
 <%=form_tag '/write', method: 'post' do %>
     <div class = "form-group">
         <textarea name="naeyong" class="form-control" rows="3"></textarea>
@@ -9,7 +10,7 @@
 <% end %>
 <ul>
     <% @blogs.each do |b| %>
-        <li><img src="<%= b.user.image_url(:thumb) %>"></li>
+    <% if b.user.email == @uu.email %>    
         <li><%=b.user.email%> :</li>
         
         <div class = "well">
@@ -94,7 +95,8 @@
                 <% end %>
             <% end %>
         <% end %>
-        
+        <%else%>
+        <%end%>
     <% end %>
 </ul>
 <script>
@@ -105,3 +107,5 @@
         collapsedHeight: 0
     });
 </script>
+
+

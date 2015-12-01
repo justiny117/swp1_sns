@@ -9,6 +9,9 @@
     <%= csrf_meta_tags %>
   </head>
   <body>
+    
+    
+    
     <nav class="navbar navbar-default">
       <div class="container">
         <div class="navbar-header">
@@ -27,9 +30,13 @@
                 <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%=current_user.email%> <span class="caret"></span></a>
                   <ul class="dropdown-menu">
+<<<<<<< HEAD
                     <li><a href="/users/edit">내 정보</a></li>
                     <li role="separator" class="divider"></li>
                     <li><a href="/myblog">내 글</a></li>
+=======
+
+>>>>>>> 9e746def91febdd7a1234fb0f8f29c3bbc2d3201
                     <li role="separator" class="divider"></li>
                     <li><a href="/mycomment">내 댓글</a></li>
                   </ul>
@@ -38,12 +45,16 @@
                 <li><a href="/wolf">WOLF</a></li>
                 <li><a href="/agreeinorder">Agree</a></li>
                 <li><a href="/follow_gather">follow글</a></li>
+                <%if current_user.nil?%>
+                <%else%>
+                  <li><a href="/userblog?nickname=<%=current_user.nickname%>">내 글</a></li>
+                <%end%>
             </ul>
             <ul class="nav navbar-nav navbar-right">
               <%if current_user.nil?%>
               <%else%>
                   <li><a href="/mypage?nickname=<%=current_user.nickname%>">마이페이지</a></li>
-              <%end%>
+              <%end%>              
               <li><a href="/users/sign_out" data-method="delete" >로그아웃</a></li>
             </ul>
           <% else %>
@@ -51,8 +62,7 @@
               <li><a href="/">HOME</a></li>
               <li><a href="/users/sign_in">로그인</a></li>
               <li><a href="/users/sign_up">회원가입</a></li>
-
-                          </ul>
+            </ul>
           <% end %>
         </div><!--/.nav-collapse -->
       </div>

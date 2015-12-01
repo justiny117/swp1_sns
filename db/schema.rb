@@ -11,7 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20151126063421) do
+=======
+ActiveRecord::Schema.define(version: 20151126054941) do
+>>>>>>> 9e746def91febdd7a1234fb0f8f29c3bbc2d3201
 
   create_table "agreecs", force: :cascade do |t|
     t.integer  "comment_id"
@@ -71,9 +75,13 @@ ActiveRecord::Schema.define(version: 20151126063421) do
     t.datetime "updated_at",                             null: false
     t.string   "nickname"
     t.boolean  "is_female",              default: false
+<<<<<<< HEAD
     t.string   "confirmation_token"
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
+=======
+    t.string   "image"
+>>>>>>> 9e746def91febdd7a1234fb0f8f29c3bbc2d3201
   end
 
   add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true

@@ -1,6 +1,9 @@
 source 'https://rubygems.org'
 
+
 gem 'mailgun_rails'
+gem 'mini_magick'
+gem 'carrierwave'
 gem 'pg'
 gem 'devise'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
