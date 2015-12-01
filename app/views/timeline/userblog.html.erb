@@ -9,7 +9,7 @@
     </div>
 <% end %>
 <ul>
-    <% @blogs.each do |b| %
+    <% @blogs.each do |b| %>
     <% if b.user.email == @uu.email %>    
         <li><%=b.user.email%> :</li>
         
