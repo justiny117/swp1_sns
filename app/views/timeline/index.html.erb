@@ -10,7 +10,7 @@
 <ul>
     <% @blogs.each do |b| %>
         <li><img src="<%= b.user.image_url(:thumb) %>"></li>
-        <li><%=b.user.email%> :</li>
+        <li><%=b.user.nickname%> :</li>
         
         <div class = "well">
             <div class = "article">
@@ -55,7 +55,7 @@
                     
                         <li>    
                             <div>
-                                <%=c.user.email%> : <%=c.msg%>
+                                <%=c.user.nickname%> : <%=c.msg%>
                                 <% if current_user.email == c.user.email %>
                                     <a href="/comment_edit?id=<%=c.id%>">수정</a>
                                     <a href="/comment_delete?id=<%=c.id%>">삭제</a>
@@ -77,7 +77,7 @@
                         </li>    
                     <% else %>
                         <li>
-                            <%=c.user.email%> : <%=c.msg%>
+                            <%=c.user.nickname%> : <%=c.msg%>
                         </li>
                     <% end %>
                 <% end %>
