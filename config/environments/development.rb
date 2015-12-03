@@ -1,5 +1,12 @@
 Rails.application.configure do
+<<<<<<< HEAD
   config.action_mailer.default_url_options = { host: 'https://css4-punst0531.c9users.io' }
+=======
+
+
+  config.action_mailer.default_url_options = { host: 'https://rails-project-2-saintexupery.c9users.io' }
+
+>>>>>>> c3046eb5579491c2fa3d64ee0664faba936b8d5b
   config.action_mailer.delivery_method = :mailgun
   config.action_mailer.mailgun_settings = {
     api_key: 'key-48ca2c08e3e9ac3d5934e029c868719a',

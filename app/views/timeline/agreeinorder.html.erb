@@ -14,25 +14,29 @@
             <div class="article">
                 <%= b.content %>
             </div>
-            <%=form_tag 'agree', class: "form-inline" do%>
-                <input type="hidden" name="blog_id" value="<%=b.id%>">
-                <input type="hidden" name="bloguseremail" value="<%=b.user.email%>">
-                <%if current_user.nil?%>
-                <%else%>
-                    <input type="hidden" name="userexist" value="<%=b.agrees.exists?(user_id: current_user.id)%>">
-                <%end%>
-                <div class="form-group">
-                    <input type="submit" class="btn btn-danger" value="공감 <%=b.agrees.count%>">
-                </div>
-            <% end %>
-            <%=form_tag 'follow', class: "form-inline" do%>
-                <input type="hidden" name="bloguseremail" value="<%=b.user.email%>">
-                <input type="hidden" name="followuserid" value="<%=b.user.id%>">
-                <input type="hidden" name="followuseremail" value="<%=b.user.email%>">
-                <div class="form-group">
-                    <input type="submit" class="btn btn-info" value="팔로우">
-                </div>
-            <% end %>            
+            <div style="display: inline-block">
+                <%=form_tag 'agree', class: "form-inline" do%>
+                    <input type="hidden" name="blog_id" value="<%=b.id%>">
+                    <input type="hidden" name="bloguseremail" value="<%=b.user.email%>">
+                    <%if current_user.nil?%>
+                    <%else%>
+                        <input type="hidden" name="userexist" value="<%=b.agrees.exists?(user_id: current_user.id)%>">
+                    <%end%>
+                    <div class="form-group">
+                        <input type="submit" class="btn btn-danger" value="공감 <%=b.agrees.count%>">
+                    </div>
+                <% end %>
+            </div>
+            <div style="display: inline-block">
+                <%=form_tag 'follow', class: "form-inline" do%>
+                    <input type="hidden" name="bloguseremail" value="<%=b.user.email%>">
+                    <input type="hidden" name="followuserid" value="<%=b.user.id%>">
+                    <input type="hidden" name="followuseremail" value="<%=b.user.email%>">
+                    <div class="form-group">
+                        <input type="submit" class="btn btn-info" value="팔로우">
+                    </div>
+                <% end %>            
+            </div>
         </div>
         <% if user_signed_in? %>
             <% if current_user.email == b.user.email %>
@@ -45,18 +49,19 @@
             <% end %>
         <% end %>
 
+        <div class="carticle">
         <ol>
             <% b.comments.each do |c| %>
                 <% if user_signed_in? %>
                     <li>
-                        <div>
+                        <div style="display: inline-block">
                             <%=c.user.email%> : <%=c.msg%>
                             <% if current_user.email == c.user.email %>
                                 <a href="/comment_edit?id=<%=c.id%>">수정</a>
                                 <a href="/comment_delete?id=<%=c.id%>">삭제</a>
                             <% end %>
                         </div>
-                        <div>
+                        <div style="display: inline-block">
                              <%=form_tag 'agreec', class: "form-inline" do%>
                                 <input type="hidden" name="comment_id" value="<%=c.id%>">
                                 <input type="hidden" name="commentuseremail" value="<%=c.user.email%>">
@@ -64,7 +69,7 @@
                                 <%else%>
                                     <input type="hidden" name="userexist2" value="<%=c.agreecs.exists?(user_id: current_user.id)%>">
                                 <%end%>
-                                <div class="form-group">
+                                <div class="form-group" style="display: inline-block">
                                     <input type="submit" value="공감 <%=c.agreecs.count%>">
                                 </div>
                              <% end %>
@@ -77,6 +82,7 @@
                 <% end %>
             <% end %>
         </ol>
+        </div>
                 
         <% if user_signed_in? %>
             <% if b.user.is_female != current_user.is_female || b.user.email == current_user.email %>
@@ -95,6 +101,9 @@
 
 <script>
     $(".article").readmore({
-        collapsedHeight: 20
+        collapsedHeight: 40
+    });
+    $(".carticle").comment({
+        collapsedHeight: 26
     });
 </script>
