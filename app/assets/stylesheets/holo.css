@@ -55,16 +55,23 @@ a {
   padding-top: 20px;
 }
 
+#sidebar .affix-top {
+  position:fixed;
+  top:55;
+  width:16%;
+}
+
 #sidebar .affix {
   position:fixed;
   top:55;
-  width:220px;
+  width:16%;
 }
+
 
 #sidebar .affix-bottom {
   position:fixed;
   top:55;
-  width:220px;
+  width:16%;
 }
 
 #sidebar .nav {
@@ -92,23 +99,23 @@ a {
   }
   .row-offcanvas-right
   .sidebar-offcanvas {
-    right: -41.6%;
+    right: -16%;
   }
 
   .row-offcanvas-left
   .sidebar-offcanvas {
-    left: -41.6%;
+    left: -20%;
   }
   .row-offcanvas-right.active {
-    right: 41.6%;
+    right: 20%;
   }
   .row-offcanvas-left.active {
-    left: 41.6%;
+    left: 20%;
   }
   .sidebar-offcanvas {
     position: absolute;
     top: 0;
-    width: 41.6%;
+    width: 20%;
   }
   #sidebar {
     background-color:#3b3b3b;

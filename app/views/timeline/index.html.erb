@@ -21,7 +21,7 @@
 
 
 <% @blogs.each do |b| %>
-<div class = "well">
+<div class = "well" style = "background-color: #FFFFFF">
 <div class = "row">
   
   <div class = "col-md-1">
@@ -30,12 +30,20 @@
           
   <div class = "col-md-11">
         <li><%=b.user.email%> :</li>
-        
-        <div class = "well">
-            <div class = "article">
-                <%= b.content %>
+        <% if b.user.is_female == true %>
+            <div class = "well" style = "background-color: #FACAFB">
+                <div class = "article">
+                    <%= b.content %>
+                </div>
             </div>
-        </div>
+        <% else %>
+            <div class = "well" style = "background-color: #ACD0E4">
+                <div class = "article">
+                    <%= b.content %>
+                </div>
+            </div>
+        <% end %>
+
         
         <div class = "input-group">
             <%=form_tag 'agree', class: "form-inline" do%>
