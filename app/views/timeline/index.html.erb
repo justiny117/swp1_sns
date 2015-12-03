@@ -1,107 +1,150 @@
-<h2>Timeline</h2>
-<%=form_tag '/write', method: 'post' do %>
-    <div class = "form-group">
-        <textarea name="naeyong" class="form-control" rows="3"></textarea>
+<div class = "row">
+    <div class = "col-md-3">
+        첫번째
     </div>
-    <div class = "form-group">
-        <input type="submit" class="btn btn-success">
-    </div>
-<% end %>
-<ul>
-    <% @blogs.each do |b| %>
-        <li><img src="<%= b.user.image_url(:thumb) %>"></li>
-        <li><%=b.user.nickname%> :</li>
-        
-        <div class = "well">
-            <div class = "article">
-                <%= b.content %>
+    
+    <div class = "col-md-7">
+      <div class = "well">
+        <div class = "row">
+            
+            <div class= "col-md-1">
+              <p><img src="<%= current_user.image_url(:thumb) %>"></p>
+            </div> 
+            
+            <div class= "col-md-11">
+              <%=form_tag '/write', method: 'post' do %>
+              <div class = "form-group">
+                <textarea name="naeyong" class="form-control" rows="3"></textarea>
+              </div>
+              <div class = "form-group" style='float: right;'>
+                <input type="submit" class="btn btn-success">
+              </div>
+              <% end %>
             </div>
-            <%=form_tag 'agree', class: "form-inline" do%>
-                <input type="hidden" name="blog_id" value="<%=b.id%>">
-                <input type="hidden" name="bloguseremail" value="<%=b.user.email%>">
-                <%if current_user.nil?%>
-                <%else%>
-                    <input type="hidden" name="userexist" value="<%=b.agrees.exists?(user_id: current_user.id)%>">
-                <%end%>
-                <div class="form-group">
-                    <input type="submit" class="btn btn-danger" value="공감 <%=b.agrees.count%>">
-                </div>
-            <% end %>
-            <%=form_tag 'follow', class: "form-inline" do%>
-                <input type="hidden" name="bloguseremail" value="<%=b.user.email%>">
-                <input type="hidden" name="followuserid" value="<%=b.user.id%>">
-                <input type="hidden" name="followuseremail" value="<%=b.user.email%>">
-                <div class="form-group">
-                    <input type="submit" class="btn btn-info" value="팔로우">
-                </div>
-            <% end %>            
+            
         </div>
-        
-        <% if user_signed_in? %>
-            <% if current_user.email == b.user.email %>
-                    <div class = "form-group">
-                        <div class = "col-md-offset-11">
-                        <a href="/blog_edit?id=<%=b.id%>">수정</a>
-                        <a href="/blog_delete?id=<%=b.id%>">삭제</a>
-                        </div>
-                    </div>
-            <% end %>
-        <% end %>
+      </div>
+      
 
-        <div class = "carticle" >
-            <ol>
-                <% b.comments.each do |c| %>
-                    <% if user_signed_in? %>
+      <% @blogs.each do |b| %>
+      <div class = "well">
+        <div class = "row">
+          
+          <div class = "col-md-1">
+                <img src="<%= b.user.image_url(:thumb) %>">
+          </div>
+                  
+          <div class = "col-md-11">
+                <li><%=b.user.email%> :</li>
+                
+                <div class = "well">
+                    <div class = "article">
+                        <%= b.content %>
+                    </div>
                     
-                        <li>    
-                            <div>
-                                <%=c.user.nickname%> : <%=c.msg%>
-                                <% if current_user.email == c.user.email %>
-                                    <a href="/comment_edit?id=<%=c.id%>">수정</a>
-                                    <a href="/comment_delete?id=<%=c.id%>">삭제</a>
-                                <% end %>
+                    
+                </div>
+                
+                <div class = "input-group">
+                    <%=form_tag 'agree', class: "form-inline" do%>
+                        <input type="hidden" name="blog_id" value="<%=b.id%>">
+                        <input type="hidden" name="bloguseremail" value="<%=b.user.email%>">
+                        <%if current_user.nil?%>
+                        <%else%>
+                            <input type="hidden" name="userexist" value="<%=b.agrees.exists?(user_id: current_user.id)%>">
+                        <%end%>
+                        <div class="form-group">
+                            <input type="submit" class="btn btn-danger" value="공감 <%=b.agrees.count%>">
+                        </div>
+                    <% end %>
+                    
+                    <%=form_tag 'follow', class: "form-inline" do%>
+                        <input type="hidden" name="bloguseremail" value="<%=b.user.email%>">
+                        <input type="hidden" name="followuserid" value="<%=b.user.id%>">
+                        <input type="hidden" name="followuseremail" value="<%=b.user.email%>">
+                        <div class="form-group">
+                            <input type="submit" class="btn btn-info" value="팔로우">
+                        </div>
+                    <% end %>
+                </div>
+                
+                <% if user_signed_in? %>
+                    <% if current_user.email == b.user.email %>
+                            <div class = "form-group">
+                                <div class = "col-md-offset-10">
+                                <a href="/blog_edit?id=<%=b.id%>">수정</a>
+                                <a href="/blog_delete?id=<%=b.id%>">삭제</a>
+                                </div>
                             </div>
-                            <div>
-                                 <%=form_tag 'agreec', class: "form-inline" do%>
-                                    <input type="hidden" name="comment_id" value="<%=c.id%>">
-                                    <input type="hidden" name="commentuseremail" value="<%=c.user.email%>">
-                                    <%if current_user.nil?%>
-                                    <%else%>
-                                        <input type="hidden" name="userexist2" value="<%=c.agreecs.exists?(user_id: current_user.id)%>">
-                                    <%end%>
-                                    <div class="form-group">
-                                        <input type="submit" value="공감 <%=c.agreecs.count%>">
-                                    </div>
-                                 <% end %>
-                            </div>
-                        </li>    
-                    <% else %>
-                        <li>
-                            <%=c.user.nickname%> : <%=c.msg%>
-                        </li>
                     <% end %>
                 <% end %>
-            </ol>
-        </div>        
-        <% if user_signed_in? %>
-            <% if b.user.is_female != current_user.is_female || b.user.email == current_user.email %>
-                <%=form_tag '/comment', class: "form-inline" do%>
-                    <input type="hidden" name="blog_id" value="<%=b.id%>">
-                    <div class = "form-group">
-                        <input type="text" name="comment" class="form-control">
-                        <input type="submit" class="btn btn-primary">
-                    </div>
-                <% end %>
-            <% end %>
-        <% end %>
         
-    <% end %>
-</ul>
-<script>
-    $(".article").readmore({
-        collapsedHeight: 20
-    });
-    $(".carticle").comment({
-        collapsedHeight: 0
-    });
-</script>
+                    <% b.comments.each do |c| %>
+                        <% if user_signed_in? %>
+                            <li>
+                                <div class = "carticle" >
+                                    <div>
+                                        <%=c.user.email%> : <%=c.msg%>
+                                        <% if current_user.email == c.user.email %>
+                                            <a href="/comment_edit?id=<%=c.id%>">수정</a>
+                                            <a href="/comment_delete?id=<%=c.id%>">삭제</a>
+                                        <% end %>
+                                    </div>
+                                    <div>
+                                         <%=form_tag 'agreec', class: "form-inline" do%>
+                                            <input type="hidden" name="comment_id" value="<%=c.id%>">
+                                            <input type="hidden" name="commentuseremail" value="<%=c.user.email%>">
+                                            <%if current_user.nil?%>
+                                            <%else%>
+                                                <input type="hidden" name="userexist2" value="<%=c.agreecs.exists?(user_id: current_user.id)%>">
+                                            <%end%>
+                                            <div class="form-group">
+                                                <input type="submit" value="공감 <%=c.agreecs.count%>">
+                                            </div>
+                                         <% end %>
+                                    </div>
+                                </div>
+                            </li>
+                        <% else %>
+                            <li>
+                                <%=c.user.email%> : <%=c.msg%>
+                            </li>
+                        <% end %>
+                    <% end %>
+
+                        
+                <% if user_signed_in? %>
+                    <% if b.user.is_female != current_user.is_female || b.user.email == current_user.email %>
+                        <%=form_tag '/comment', class: "form-inline" do%>
+                            <input type="hidden" name="blog_id" value="<%=b.id%>">
+                            <div class = "form-group">
+                                <input type="text" name="comment" class="form-control">
+                                <input type="submit" class="btn btn-primary">
+                            </div>
+                        <% end %>
+                    <% end %>
+                <% end %>
+                
+            
+                <script>
+                    $(".article").readmore({
+                        collapsedHeight: 20
+                    });
+                    $(".carticle").comment({
+                        collapsedHeight: 0
+                    });
+                </script>
+          </div>
+        
+        </div>
+         
+      </div>
+      <% end %> 
+    
+    </div>
+    
+    <div class = "col-md-2">
+        세번째
+    </div>
+
+</div>
