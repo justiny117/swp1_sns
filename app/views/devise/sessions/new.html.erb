@@ -12,7 +12,9 @@
     <!-- Header -->
     <header id="top" class="header">
         <div class="text-vertical-center">
-            <h1>WOLF & FOX</h1><br/>
+            <h1 style="color: black; font-size: 45px;">당신이 궁금해하던 이성의 모든 것</h1>
+            <h3 style="line-height: 35px; color: black">늑대와 여우는 서로 다른 생각을 가진 이성들과 <br>익명으로 진솔한 이야기를 나누는 새로운 익명 SNS입니다 </h3>
+            <br>
             <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
               <div class="field">
                 <%= f.email_field :email, autofocus: true, placeholder: "Email" %>
@@ -31,7 +33,6 @@
               <!--비밀번호 찾기 링크 필요-->
               <a href="/users/password/new" class="btn btn-dark btn-md">비밀번호 찾기</a>
             <% end %>
-
 
         </div>
     </header>
