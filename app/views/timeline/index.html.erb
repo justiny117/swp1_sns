@@ -39,27 +39,24 @@
         
         <div class = "input-group">
             <div style="display: inline-block">
-                <%=form_tag 'agree', class: "form-inline" do%>
-                    <input type="hidden" name="blog_id" value="<%=b.id%>">
-                    <input type="hidden" name="bloguseremail" value="<%=b.user.email%>">
-                    <%if current_user.nil?%>
-                    <%else%>
-                        <input type="hidden" name="userexist" value="<%=b.agrees.exists?(user_id: current_user.id)%>">
-                    <%end%>
-                    <div class="form-group">
-                        <input type="submit" class="btn btn-danger" value="공감 <%=b.agrees.count%>">
-                    </div>
+                <%=form_tag 'agree' do%>
+                <input type="hidden" name="blog_id" value="<%=b.id%>">
+                <input type="hidden" name="bloguseremail" value="<%=b.user.email%>">
+                <%if current_user.nil?%>
+                <%else%>
+                    <input type="hidden" name="userexist" value="<%=b.agrees.exists?(user_id: current_user.id)%>">
+                <%end%>
+                    <input type="image" src="/agree.png" style="width:28px; height:28px" margin-top="10px" alt="Agree">
+                    <span style="display:inline-block; vertical-align:top; font-size:21px", class="badge"><%=b.agrees.count%></span>
                 <% end %>
             </div>
             
             <div style="display: inline-block">
-                <%=form_tag 'follow', class: "form-inline" do%>
+                <%=form_tag 'follow' do%>
                     <input type="hidden" name="bloguseremail" value="<%=b.user.email%>">
                     <input type="hidden" name="followuserid" value="<%=b.user.id%>">
                     <input type="hidden" name="followuseremail" value="<%=b.user.email%>">
-                    <div class="form-group">
-                        <input type="submit" class="btn btn-info" value="팔로우">
-                    </div>
+                    <input type="image" src="/follow.png" style="width:40px; height:30px" alt="Follow">
                 <% end %>
             </div>
         </div>
