@@ -1,10 +1,9 @@
 Rails.application.configure do
-  
   config.action_mailer.default_url_options = { host: 'https://qwer-justiny117.c9users.io' }
   config.action_mailer.delivery_method = :mailgun
   config.action_mailer.mailgun_settings = {
-    api_key: 'key-68b290d467979692c9f18244329543d6',
-    domain: 'sandbox72ccb772ac2e49f1a795d12381239b75.mailgun.org'
+    api_key: 'key-48ca2c08e3e9ac3d5934e029c868719a',
+    domain: 'sandboxfe3642d78d9e41d1a0fa5b5d178f3d1f.mailgun.org'
   }
   
   # Settings specified here will take precedence over those in config/application.rb.

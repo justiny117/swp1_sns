@@ -319,7 +319,7 @@
     else if (typeof options === 'string' && options[0] !== '_' && options !== 'init') {
       return this.each(function () {
         var instance = $.data(this, 'plugin_' + readmore);
-        if (instance instanceof Readmore && typeof instance[options] === 'function') {
+        if (instance instanceof comment && typeof instance[options] === 'function') {
           instance[options].apply(instance, Array.prototype.slice.call(args, 1));
         }
       });

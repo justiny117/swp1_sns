@@ -1,5 +1,7 @@
 class TimelineController < ApplicationController
     before_action :authenticate_user!, except: :index
+    before_action :authenticate_user!, except: :front
+
     def index
         @blogs = Blog.all.reverse
     end
