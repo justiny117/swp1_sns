@@ -1,4 +1,4 @@
-<div class = "well">
+<div class = "well" style= "background-color: #F9F9F9">
 <div class = "row">
     
     <div class= "col-md-1">
@@ -21,7 +21,11 @@
 
 
 <% @blogs.each do |b| %>
-<div class = "well">
+<% if b.user.is_female == true %>
+<div class = "well" style= "background-color: #FFE2E7">
+<% else %>
+<div class = "well" style= "background-color: #F0F8FF">
+<% end %>
 <div class = "row">
   
   <div class = "col-md-1">
@@ -31,8 +35,8 @@
   <div class = "col-md-11">
         <li><%=b.user.email%> :</li>
         
-        <div class = "well">
-            <div class = "article">
+        <div class = "well"  style= "background-color: #F9F9F9" >
+            <div class = "article" style= "background-color: #F9F9F9" >
                 <%= b.content %>
             </div>
         </div>
