@@ -1,6 +1,10 @@
 Rails.application.configure do
 <<<<<<< HEAD
+<<<<<<< HEAD
   config.action_mailer.default_url_options = { host: 'https://css4-punst0531.c9users.io' }
+=======
+  config.action_mailer.default_url_options = { host: 'https://css-cssrew-neovenezia.c9users.io' }
+>>>>>>> f00d37d57f631e4cbc9294adafcc676d8d12ef5f
 =======
 
 
