@@ -11,8 +11,8 @@
                 <img src="<%= a.image_url(:medium) %>">
                 <a href="#"></a>
             </p>
-            <div class="clearfix">
-            </div>
+            <!--<div class="clearfix">-->
+            <!--</div>-->
             <hr>
             <%if current_user.email == a.email%>
                 <ul class="list-group">
@@ -23,7 +23,7 @@
                     <a href="/users/edit" class="list-group-item list-group-item-danger"><strong>정보 수정</strong></a>
                 </ul>
                 <hr>
-            <%else%>
+            <!--<%else%>-->
             <%end%>
                  
             <ul class="list-group">
