@@ -38,26 +38,30 @@
         </div>
         
         <div class = "input-group">
-            <%=form_tag 'agree', class: "form-inline" do%>
-                <input type="hidden" name="blog_id" value="<%=b.id%>">
-                <input type="hidden" name="bloguseremail" value="<%=b.user.email%>">
-                <%if current_user.nil?%>
-                <%else%>
-                    <input type="hidden" name="userexist" value="<%=b.agrees.exists?(user_id: current_user.id)%>">
-                <%end%>
-                <div class="form-group">
-                    <input type="submit" class="btn btn-danger" value="공감 <%=b.agrees.count%>">
-                </div>
-            <% end %>
+            <div style="display: inline-block">
+                <%=form_tag 'agree', class: "form-inline" do%>
+                    <input type="hidden" name="blog_id" value="<%=b.id%>">
+                    <input type="hidden" name="bloguseremail" value="<%=b.user.email%>">
+                    <%if current_user.nil?%>
+                    <%else%>
+                        <input type="hidden" name="userexist" value="<%=b.agrees.exists?(user_id: current_user.id)%>">
+                    <%end%>
+                    <div class="form-group">
+                        <input type="submit" class="btn btn-danger" value="공감 <%=b.agrees.count%>">
+                    </div>
+                <% end %>
+            </div>
             
-            <%=form_tag 'follow', class: "form-inline" do%>
-                <input type="hidden" name="bloguseremail" value="<%=b.user.email%>">
-                <input type="hidden" name="followuserid" value="<%=b.user.id%>">
-                <input type="hidden" name="followuseremail" value="<%=b.user.email%>">
-                <div class="form-group">
-                    <input type="submit" class="btn btn-info" value="팔로우">
-                </div>
-            <% end %>
+            <div style="display: inline-block">
+                <%=form_tag 'follow', class: "form-inline" do%>
+                    <input type="hidden" name="bloguseremail" value="<%=b.user.email%>">
+                    <input type="hidden" name="followuserid" value="<%=b.user.id%>">
+                    <input type="hidden" name="followuseremail" value="<%=b.user.email%>">
+                    <div class="form-group">
+                        <input type="submit" class="btn btn-info" value="팔로우">
+                    </div>
+                <% end %>
+            </div>
         </div>
         
         <% if user_signed_in? %>
