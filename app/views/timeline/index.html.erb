@@ -80,14 +80,14 @@
                 <% if user_signed_in? %>
                     
                     <li>
-                        <div>
+                        <div style="display: inline-block">
                             <%=c.user.email%> : <%=c.msg%>
                             <% if current_user.email == c.user.email %>
                                 <a href="/comment_edit?id=<%=c.id%>">수정</a>
                                 <a href="/comment_delete?id=<%=c.id%>">삭제</a>
                             <% end %>
                         </div>
-                        <div>
+                        <div style="display: inline-block">
                              <%=form_tag 'agreec', class: "form-inline" do%>
                                 <input type="hidden" name="comment_id" value="<%=c.id%>">
                                 <input type="hidden" name="commentuseremail" value="<%=c.user.email%>">
@@ -95,7 +95,7 @@
                                 <%else%>
                                     <input type="hidden" name="userexist2" value="<%=c.agreecs.exists?(user_id: current_user.id)%>">
                                 <%end%>
-                                <div class="form-group">
+                                <div class="form-group" style="display: inline-block">
                                     <input type="submit" value="공감 <%=c.agreecs.count%>">
                                 </div>
                              <% end %>
@@ -135,9 +135,9 @@
 
 <script>
     $(".article").readmore({
-        collapsedHeight: 20
+        collapsedHeight: 40
     });
     $(".carticle").comment({
-        collapsedHeight: 20
+        collapsedHeight: 26
     });
 </script>
