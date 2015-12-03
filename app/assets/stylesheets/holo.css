@@ -39,11 +39,11 @@ hr {
 
 body {
   padding-top: 51px; 
-  background: #800000;
-  color: #f9f9f9;
+  background: #FFFFFF;        /* main page background color */
+  color: #864704;             /* text color*/
 }
 a {
-  color:#bcbcbc;
+  color:#864704;              /* link text color */
 }
 .text-center {
   padding-top: 20px;
@@ -75,7 +75,7 @@ a {
   border-bottom-width:1px;
 }
 #sidebar li a {
-  padding-left:1px;
+  text-align:center;
 }
 #sidebar li a:hover {
   background-color:#222222;
