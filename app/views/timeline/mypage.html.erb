@@ -62,6 +62,7 @@
           <div class="panel-body">
                 <% @user2.each do |b| %>
                     <% if @Follow.exists?(user_id: b.id) == true %>
+                        <img src="<%= b.image_url(:thumb) %>">
                         <%=b.nickname%>
                                 <a href="/mypage?nickname=<%=b.nickname%>">마이페이지</a>
                                 <%if current_user.email == a.email%>
@@ -92,6 +93,7 @@
            <div class="panel-body">
                            <% @user2.each do |c| %>
                     <% if @Follow.exists?(user_id: c.id) == true %>
+                        <img src="<%= c.image_url(:thumb) %>">
                         <%=c.nickname%>
                                 <a href="/mypage?nickname=<%=c.nickname%>">마이페이지</a>
                                 <br>
