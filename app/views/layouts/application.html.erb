@@ -17,7 +17,6 @@
   
   <body>
     <div class="page-container">
-      
       <% if user_signed_in? %>    
       	<!-- top navbar -->
         <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
@@ -28,8 +27,8 @@
               <span class="icon-bar"></span>
             </button>
           </div>
+          
         	<div id="navbar" class="navbar-collapse collapse">
-
             <ul class="nav navbar-nav">
               <div class="navbar-brand"><b>WELCOME! <%=current_user.nickname%></b></div>
               <li></li>
@@ -69,11 +68,11 @@
               <!--</div>-->
             </div>
             
-            <div class = "col-sm-2 col-md-2">
+            <div class = "col-sm-2 col-md-2" id="sidebar" role="navigation">
               <div class="affix-top" data-spy="affix" data-offset-top="45" data-offset-bottom="90">
                <ul class="nav" id="sidebar-nav" role="navigation">
-                  <li><a>Fox and wolf</a></li>
-                  <li><a>남정민, 노태민, 민영기, 박건형, 이상효</a></li>
+                  <li><a><b>FOX AND WOLF</b><br>2015</a></li>
+                  <li><a>남정민<br>노태민<br>민영기<br>박건형<br>이상효</a></li>
                 </ul>
               </div
             </div>
@@ -90,6 +89,10 @@
         <!--</div>-->
       <%end%>  
     </div>
+
+  </body>
+</html>
+
     
 <script type="text/javascript">
   $(document).ready(function() {
@@ -101,6 +104,3 @@
     });
   });
 </script>
-
-  </body>
-</html>
