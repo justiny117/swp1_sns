@@ -13,11 +13,11 @@ class TimelineController < ApplicationController
     end
     def write
         Blog.create(user_id: current_user.id, content: params[:naeyong])
-        redirect_to :root
+        redirect_to :back
     end
     def comment
         Comment.create(user_id: current_user.id, blog_id: params[:blog_id], msg: params[:comment])
-        redirect_to :root
+        redirect_to :back
     end
     def blog_edit
         @blog = Blog.find(params[:id])
@@ -29,23 +29,23 @@ class TimelineController < ApplicationController
         blogu = Blog.find(params[:id])
         blogu.content = params[:naeyong]
         blogu.save
-        redirect_to :root
+        redirect_to :back
     end
     def comment_update
         commu = Comment.find(params[:id])
         commu.msg = params[:comment]
         commu.save
-        redirect_to :root
+        redirect_to :back
     end
     def blog_delete
         blogd = Blog.find(params[:id])
         blogd.destroy
-        redirect_to :root
+        redirect_to :back
     end
     def comment_delete
         commd = Comment.find(params[:id])
         commd.destroy
-        redirect_to :root
+        redirect_to :back
     end
 
     def myblog
@@ -58,35 +58,35 @@ class TimelineController < ApplicationController
     end
     def agree
         if params[:bloguseremail] == current_user.email then
-            redirect_to :root
+            redirect_to :back
         elsif   params[:userexist] == 'true'      then
-            redirect_to :root
+            redirect_to :back
         else
             Agree.create(user_id: current_user.id, blog_id: params[:blog_id])
-            redirect_to :root
+            redirect_to :back
         end
     end
     
     def agreec
         if params[:commentuseremail] == current_user.email then
-            redirect_to :root
+            redirect_to :back
         elsif   params[:userexist2] == 'true'      then
-            redirect_to :root
+            redirect_to :back
         else
             Agreec.create(user_id: current_user.id, comment_id: params[:comment_id])
-            redirect_to :root
+            redirect_to :back
         end        
     end
     def follow
         @followexist = Follower.where(useremail: params[:bloguseremail])
         if params[:bloguseremail] == current_user.email then
-        redirect_to :root
+        redirect_to :back
         elsif  @followexist.exists?(user_id: current_user.id) == 'true'  then
-        redirect_to :root        
+        redirect_to :back        
         else
         Following.create(useremail: current_user.email, user_id: params[:followuserid])
         Follower.create(useremail: params[:followuseremail], user_id: current_user.id)
-        redirect_to :root
+        redirect_to :back
         end
     end    
     def follow_gather
@@ -113,7 +113,7 @@ class TimelineController < ApplicationController
             b.destroy
             end
         end
-        redirect_to :root
+        redirect_to :back
     end
     
     def userblog
