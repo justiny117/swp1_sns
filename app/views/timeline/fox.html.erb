@@ -17,6 +17,7 @@
                     <%= b.content %>
                 </div>
                 <div style="display: inline-block">
+                    
                     <%=form_tag 'agree', class: "form-inline" do%>
                         <input type="hidden" name="blog_id" value="<%=b.id%>">
                         <input type="hidden" name="bloguseremail" value="<%=b.user.email%>">

@@ -1,105 +1,95 @@
 <% @user.each do |a| %>
-    
+        
     <br>
-    
     <div class="panel panel-default">
-       <div class="panel-heading">
-           <h4>MYPAGE OF <%=a.nickname%></h4>
+        <div class="panel-heading">
+            <h4>MYPAGE OF <%=a.nickname%></h4>
         </div>
-        
+            
         <div class="panel-body">
-            <p><img src="<%= a.image_url(:medium) %>">
-            <a href="#"></a></p>
-            <div class="clearfix"></div>
+            <p>
+                <img src="<%= a.image_url(:medium) %>">
+                <a href="#"></a>
+            </p>
+            <!--<div class="clearfix">-->
+            <!--</div>-->
             <hr>
-               <%if current_user.email == a.email%>
-            <ul class="list-group">
-              <li class="list-group-item list-group-item-default">
-                  <strong>내 개인정보</strong></li>                
-              <li class="list-group-item list-group-item-success">
-                  <strong>이메일 주소 </strong> <%=a.email%></li>
-                  
-                  
-              <li class="list-group-item list-group-item-info">
-                 <strong> 마지막로그인</strong>  <%=a.last_sign_in_at%></li>
-            <a href="/userblog?nickname=<%=current_user.nickname%>" class="list-group-item list-group-item-warning">
-               <strong>내가 쓴 글</strong></a>  
-                <a href="/users/edit" class="list-group-item list-group-item-danger">
-                    <strong>정보 수정</strong></a>
-            </ul>
-            <hr>
-                <%else%>
-                <%end%>
+            <%if current_user.email == a.email%>
+                <ul class="list-group">
+                    <li class="list-group-item list-group-item-default"><strong>내 개인정보</strong></li>                
+                    <li class="list-group-item list-group-item-success"><strong>이메일 주소 </strong> <%=a.email%></li>
+                    <li class="list-group-item list-group-item-info"><strong> 마지막로그인</strong>  <%=a.last_sign_in_at%></li>
+                    <a href="/userblog?nickname=<%=current_user.nickname%>" class="list-group-item list-group-item-warning"><strong>내가 쓴 글</strong></a>  
+                    <a href="/users/edit" class="list-group-item list-group-item-danger"><strong>정보 수정</strong></a>
+                </ul>
+                <hr>
+            <!--<%else%>-->
+            <%end%>
                  
-        
             <ul class="list-group">
-                          <% if a.is_female == false%>
-                <li class="btn btn-success">
-                      <strong>늑대</strong></li>
-                          <%else%>
-                <li class="btn btn-warning">
-                      <strong>여우</strong></li>
-                          <%end%>
-                <a href="/userblog?nickname=<%=a.nickname%>" class="btn btn-default">
-                    이 유저가 작성한 글
-                </a>
+                <% if a.is_female == false%>
+                    <li class="btn btn-success"><strong>늑대</strong></li>
+                <%else%>
+                    <li class="btn btn-warning"><strong>여우</strong></li>
             </ul>
-                      
-    <hr>
-        
-    <div class="panel panel-primary">
+                <%end%>
+            <ul class="list-group">
+                <a href="/userblog?nickname=<%=a.nickname%>" class="btn btn-default">이 유저가 작성한 글</a>
+            </ul>
+            <hr>
+            
+            <div class="panel panel-primary">
                 <% @Follow = Following.where(useremail: a.email)%>
                 <% @user2 = User.all%>
-        <div class="panel-heading">
-                <%if current_user.email == a.email%>
-                내가 
-                <%else%>
-                이 유저가 
-                <%end%>
-                팔로우 하고 있는 사람
-                <span class="badge"><%=@Follow.count%></span>
-        </div>
-          <div class="panel-body">
+                <div class="panel-heading">
+                    <%if current_user.email == a.email%>
+                        내가 
+                    <%else%>
+                        이 유저가 
+                    <%end%>
+                        팔로우 하고 있는 사람
+                    <span class="badge"><%=@Follow.count%></span>
+                </div>
+            <div class="panel-body">
                 <% @user2.each do |b| %>
                     <% if @Follow.exists?(user_id: b.id) == true %>
+                        <img src="<%= b.image_url(:thumb) %>">
                         <%=b.nickname%>
-                                <a href="/mypage?nickname=<%=b.nickname%>">마이페이지</a>
-                                <%if current_user.email == a.email%>
-                                    <a href="/follow_delete?id=<%=b.id%>">삭제</a>
-                                <%else%>
-                                <%end%>
-                                <br>
+                        <a href="/mypage?nickname=<%=b.nickname%>">마이페이지</a>
+                        <%if current_user.email == a.email%>
+                            <a href="/follow_delete?id=<%=b.id%>">삭제</a>
+                        <%else%>
+                        <%end%>
+                        <br>
                     <% end %>
                 <% end %>
-          </div>        
-    </div>
-    
-   <hr>
-    
-    
-    <div class="panel panel-info">
-                <div class="panel-heading">
-            <% @Follow = Follower.where(useremail: a.email)%>
-
-                    <%if current_user.email == a.email%>
+            </div>        
+        </div>
+        
+        <hr>
+        
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <% @Follow = Follower.where(useremail: a.email)%>
+                <%if current_user.email == a.email%>
                     나를 
-                    <%else%>
+                <%else%>
                     이 유저를 
-                    <%end%>
+                <%end%>
                     팔로우 하는 사람
                 <span class="badge"><%=@Follow.count%></span>
-        </div>
-           <div class="panel-body">
-                           <% @user2.each do |c| %>
+            </div>
+            <div class="panel-body">
+                <% @user2.each do |c| %>
                     <% if @Follow.exists?(user_id: c.id) == true %>
+                        <img src="<%= c.image_url(:thumb) %>">
                         <%=c.nickname%>
-                                <a href="/mypage?nickname=<%=c.nickname%>">마이페이지</a>
-                                <br>
-                        <% end %>
+                        <a href="/mypage?nickname=<%=c.nickname%>">마이페이지</a>
+                        <br>
                     <% end %>
-           </div>       
+                <% end %>
+            </div>       
+        </div>
     </div>
-</div>
-</div>
 
 <%end%>
