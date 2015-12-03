@@ -28,23 +28,23 @@
                     <strong>정보 수정</strong></a>
             </ul>
             <hr>
-                 <%else%>
-                 <%end%>
+                <%else%>
+                <%end%>
                  
-              <ul class="list-group">
-                      <% if a.is_female == false%>
-              <li class="btn btn-success">
-                  <strong>늑대</strong></li>
-                      <%else%>
-              <li class="btn btn-warning">
-                  <strong>여우</strong></li>
-              </ul>
-                  <%end%>
-                  <ul class="list-group">
-             <a href="/userblog?nickname=<%=a.nickname%>" class="btn btn-default">
-                 이 유저가 작성한 글
-            </a>
-         </ul>
+        
+            <ul class="list-group">
+                          <% if a.is_female == false%>
+                <li class="btn btn-success">
+                      <strong>늑대</strong></li>
+                          <%else%>
+                <li class="btn btn-warning">
+                      <strong>여우</strong></li>
+                          <%end%>
+                <a href="/userblog?nickname=<%=a.nickname%>" class="btn btn-default">
+                    이 유저가 작성한 글
+                </a>
+            </ul>
+                      
     <hr>
         
     <div class="panel panel-primary">

@@ -9,14 +9,15 @@
 <% end %>
 <ul>
     <% @blogs.each do |b| %>
-        <li><img src="<%= b.user.image_url(:thumb) %>"></li>
-        <li><%=b.user.nickname%> :</li>
+        <img src="<%= b.user.image_url(:thumb) %>">
+        <%=b.user.nickname%> :
         
         <div class = "well">
             <div class = "article">
                 <%= b.content %>
             </div>
-            <%=form_tag 'agree', class: "form-inline" do%>
+            <div style="display: inline-block">
+              <%=form_tag 'agree', class: "form-inline" do%>
                 <input type="hidden" name="blog_id" value="<%=b.id%>">
                 <input type="hidden" name="bloguseremail" value="<%=b.user.email%>">
                 <%if current_user.nil?%>
@@ -26,15 +27,19 @@
                 <div class="form-group">
                     <input type="submit" class="btn btn-danger" value="공감 <%=b.agrees.count%>">
                 </div>
-            <% end %>
-            <%=form_tag 'follow', class: "form-inline" do%>
+              <% end %>         
+            </div>
+            <div style="display: inline-block">
+              <%=form_tag 'follow', class: "form-inline" do%>
                 <input type="hidden" name="bloguseremail" value="<%=b.user.email%>">
                 <input type="hidden" name="followuserid" value="<%=b.user.id%>">
                 <input type="hidden" name="followuseremail" value="<%=b.user.email%>">
                 <div class="form-group">
                     <input type="submit" class="btn btn-info" value="팔로우">
                 </div>
-            <% end %>            
+              <% end %>   
+            </div>
+          
         </div>
         
         <% if user_signed_in? %>
@@ -102,6 +107,6 @@
         collapsedHeight: 20
     });
     $(".carticle").comment({
-        collapsedHeight: 0
+        collapsedHeight: 40
     });
 </script>
