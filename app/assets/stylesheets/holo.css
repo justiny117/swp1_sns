@@ -13,6 +13,12 @@ hr {
   border-color:#191919;
 }
 
+.main-container {
+  display: block;
+  position: relative;
+  width: 1200px;
+}
+
 /* wrapper for page content to push down footer */
 .page-container {
   min-height: 100%;
@@ -23,6 +29,7 @@ hr {
   /* pad bottom by footer height */
   padding: 0 0 70px;
 }
+
 
 /* set the fixed height of the footer here */
 #footer {
@@ -64,7 +71,7 @@ a {
 #sidebar .affix {
   position:fixed;
   top:55;
-  width:16%;
+  width:185px;
 }
 
 
@@ -153,11 +160,11 @@ a {
 /*}*/
 
 /* theme */
-.btn,.form-control,.alert,.progress,.panel,.list-group,.well,.list-group-item:first-child {border-radius:1px;box-shadow:0 0 0;}
+.btn,.form-control,.alert,.progress,.panel,.list-group,.well,.list-group-item:first-child {border-radius:0px;box-shadow:0 0 0;}
 .btn {border-color:transparent;}
 .btn-default,.well {
   background-color:#cccccc;
-  border-color:#c0c0c0;
+  border-color:#ffffff;
 }
 .btn-primary,.label-primary,.list-group-item.active,.list-group-item.active:hover,.list-group-item.active:focus,.btn.active,a.list-group-item.active, a.list-group-item.active:hover, a.list-group-item.active:focus {
    background-color:#0099CC;

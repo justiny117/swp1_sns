@@ -16,6 +16,7 @@
                 <!--<div class="clearfix">-->
                 <!--</div>-->
                 <hr>
+
                 <%if current_user.email == a.email%>
                     <ul class="list-group">
                         <li class="list-group-item list-group-item-default"><strong>내 개인정보</strong></li>                
@@ -25,10 +26,10 @@
                         <a href="/users/edit" class="list-group-item list-group-item-danger"><strong>정보 수정</strong></a>
                     </ul>
                     <hr>
-                <%else%>
-                
-                <%end%>
-                     
+
+            <%else%>
+            <%end%>
+
                 <ul class="list-group">
                     <% if a.is_female == false%>
                         <li class="btn btn-success"><strong>늑대</strong></li>
