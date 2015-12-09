@@ -81,7 +81,7 @@ class TimelineController < ApplicationController
         @followexist = Follower.where(useremail: params[:bloguseremail])
         if params[:bloguseremail] == current_user.email then
         redirect_to :back
-        elsif  @followexist.exists?(user_id: current_user.id) == 'true'  then
+        elsif  @followexist.exists?(user_id: current_user.id) == true  then
         redirect_to :back        
         else
         Following.create(useremail: current_user.email, user_id: params[:followuserid])
