@@ -1,3 +1,6 @@
+<!DOCTYPE html>
+<html lang="ko">
+
 <div class = "well" style= "background-color: #F9F9F9">
     <div class = "row">
     
@@ -21,23 +24,22 @@
 
 
 <% @blogs.each do |b| %>
+
     <% if b.user.is_female == true %>
-    <div class = "well" style= "background-color: #FFE2E7">
+        <div class = "well" style= "background-color: #FFE2E7">
     <% else %>
-    <div class = "well" style= "background-color: #F0F8FF">
+        <div class = "well" style= "background-color: #F0F8FF">
     <% end %>
 
         <div class = "row">
-          
           <div class = "col-md-1">
                 <img src="<%= b.user.image_url(:thumb) %>">
           </div>
                   
           <div class = "col-md-11">
                 <%=b.user.email%> :
-                
-                <div class = "well"  style= "background-color: #F9F9F9" >
-                    <div class = "article" style= "background-color: #F9F9F9" >
+                <div class = "well"  style= "background-color: #FFF" >
+                    <div class = "article" style= "background-color: #FFF" >
                         <%= b.content %>
                     </div>
                 </div>
@@ -55,8 +57,8 @@
                             <span style="display:inline-block; vertical-align:top; font-size:21px", class="badge"><%=b.agrees.count%></span>
                         <% end %>
                     </div>
-                    
                     <div style="display: inline-block">
+
                         <%=form_tag 'follow' do%>
                             <input type="hidden" name="bloguseremail" value="<%=b.user.email%>">
                             <input type="hidden" name="followuserid" value="<%=b.user.id%>">
@@ -64,25 +66,28 @@
                             <input type="image" src="/follow.png" style="width:40px; height:30px" alt="Follow">
                         <% end %>
                     </div>
-                </div>
-                
-                <% if user_signed_in? %>
+                    <div class="row" style="display: inline-block">
+                        
+                    <% if user_signed_in? %>
                     <% if current_user.email == b.user.email %>
-                            <div class = "form-group">
-                                <div class = "col-md-offset-10">
-                                <a href="/blog_edit?id=<%=b.id%>">수정</a>
-                                <a href="/blog_delete?id=<%=b.id%>">삭제</a>
-                                </div>
-                            </div>
+                    <div class="col-xs-1 col-xs-offset-6">
+                            <a href="/blog_edit?id=<%=b.id%>"><img src="/edit.png" style="width:33px; height:30px"></a>
+                    </div>
+                    <div class="col-xs-1">
+                            <a href="/blog_delete?id=<%=b.id%>"><img src="/delete.png" style="width:33px; height:30px"></a>
+                    </div>                    
                     <% else %>
                     <% end %>
-                <% else %>    
-                <% end %>
+                    <% else %>    
+                    <% end %>
+                    </div>
+                </div>
+                
+                
         
                 <div class = "carticle" >
                     <% b.comments.each do |c| %>
                         <% if user_signed_in? %>
-                            
                             <li>
                                 <div style="display: inline-block">
                                     <%=c.user.email%> : <%=c.msg%>
@@ -107,14 +112,12 @@
                             </li>
                             
                         <% else %>
-                
                             <li>
                                 <%=c.user.email%> : <%=c.msg%>
                             </li>
                         <% end %>
                     <% end %>
                 </div>    
-        
                         
                 <% if user_signed_in? %>
                     <% if b.user.is_female != current_user.is_female || b.user.email == current_user.email %>
@@ -128,12 +131,8 @@
                     <% end %>
                 <% end %>
                 
-            
-                
           </div>
-
         </div>
- 
     </div>
 <% end %> 
 
@@ -146,3 +145,5 @@
         collapsedHeight: 26
     });
 </script>
+
+</html>

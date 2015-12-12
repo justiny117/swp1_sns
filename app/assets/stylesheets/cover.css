@@ -80,6 +80,7 @@ hr.small {
     width: 250px;
     margin: 0;
     padding: 0;
+    height: 50px !important;
     list-style: none;
 }
 
@@ -228,15 +229,15 @@ hr.small {
 
 /* Map */
 
-.map {
-    height: 500px;
-}
+/*.map {*/
+/*    height: 500px;*/
+/*}*/
 
-@media(max-width:768px) {
-    .map {
-        height: 75%;
-    }
-}
+/*@media(max-width:1200px) {*/
+/*    .map {*/
+/*        height: 75%;*/
+/*    }*/
+/*}*/
 
 /* Footer */
 

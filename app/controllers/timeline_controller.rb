@@ -29,13 +29,13 @@ class TimelineController < ApplicationController
         blogu = Blog.find(params[:id])
         blogu.content = params[:naeyong]
         blogu.save
-        redirect_to :back
+        redirect_to :root
     end
     def comment_update
         commu = Comment.find(params[:id])
         commu.msg = params[:comment]
         commu.save
-        redirect_to :back
+        redirect_to :root
     end
     def blog_delete
         blogd = Blog.find(params[:id])
@@ -81,7 +81,7 @@ class TimelineController < ApplicationController
         @followexist = Follower.where(useremail: params[:bloguseremail])
         if params[:bloguseremail] == current_user.email then
         redirect_to :back
-        elsif  @followexist.exists?(user_id: current_user.id) == 'true'  then
+        elsif  @followexist.exists?(user_id: current_user.id) == true  then
         redirect_to :back        
         else
         Following.create(useremail: current_user.email, user_id: params[:followuserid])
