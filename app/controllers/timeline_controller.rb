@@ -29,13 +29,13 @@ class TimelineController < ApplicationController
         blogu = Blog.find(params[:id])
         blogu.content = params[:naeyong]
         blogu.save
-        redirect_to :back
+        redirect_to :root
     end
     def comment_update
         commu = Comment.find(params[:id])
         commu.msg = params[:comment]
         commu.save
-        redirect_to :back
+        redirect_to :root
     end
     def blog_delete
         blogd = Blog.find(params[:id])

@@ -1,8 +1,12 @@
 <h1>Comment_edit</h1>
 
 <%=form_tag '/comment_update', method: 'post' do %>
-    <input type="hidden" name="id" value="<%=@comm.id%>">
-    <input type="text" name="comment" value="<%=@comm.msg%>">
-    <input type="submit">
-    <a href="/">취소</a>
+    <div class = "form-group">
+        <input type="hidden" name="id" value="<%=@comm.id%>">
+        <input type="text" name="comment" value="<%=@comm.msg%>" class="form-control" rows="1">
+    </div>
+    <div class = "form-group">
+        <a href="/" class="btn btn-success" style='float: right;'>취소</a>
+        <input type="submit" class="btn btn-success" style='float: right;'>
+    </div>
 <% end %>
