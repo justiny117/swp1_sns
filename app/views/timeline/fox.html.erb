@@ -31,7 +31,7 @@
                 </div>
                       
                 <div class = "col-md-11">
-                    <%=b.user.email%> :
+                    <%=b.user.nickname%> :
                     <div class = "well"  style= "background-color: #FFF" >
                         <div class = "article" style= "background-color: #FFF" >
                             <pre><%= b.content %></pre>
@@ -84,7 +84,7 @@
                             <% if user_signed_in? %>
                                 <li>
                                     <div style="display: inline-block">
-                                        <%=c.user.email%> : <%=c.msg%>
+                                        <%=c.user.nickname%> : <%=c.msg%>
                                         <% if current_user.email == c.user.email %>
                                             <a href="/comment_edit?id=<%=c.id%>">수정</a>
                                             <a href="/comment_delete?id=<%=c.id%>">삭제</a>
@@ -107,7 +107,7 @@
                                 
                             <% else %>
                                 <li>
-                                    <%=c.user.email%> : <%=c.msg%>
+                                    <%=c.user.nickname%> : <%=c.msg%>
                                 </li>
                             <% end %>
                         <% end %>
@@ -133,7 +133,7 @@
 
 <script>
     $(".article").readmore({
-        collapsedHeight: 40
+        collapsedHeight: 46
     });
     $(".carticle").comment({
         collapsedHeight: 26
