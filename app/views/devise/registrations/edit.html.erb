@@ -14,7 +14,7 @@
 
   <% if current_user.image.url.present? %>
 
-    <img src="<%=current_user.image.url%>">
+    <img src="<%=current_user.image_url(:medium) %>">
     <div class="field">
     사진 삭제
     <%= f.label :remove_image do %>
